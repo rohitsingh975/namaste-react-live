@@ -14,6 +14,7 @@
  * Port number 
  * Consistent Hashing Algorithm
  * Zero Config
+ * Tree Shaking
  * Transitive Dependencies
  */
 
@@ -22,24 +23,32 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 
-const heading = React.createElement("h1",
-{
-    id:"title"
-},
-"Heading 1 from parcel");
+const heading2 = <h1 id="title" key="h2">Namaste React</h1>;
 
-const heading2 = React.createElement("h2",
-{
-    id:"title"
-},
-"Heading 2");
 
-const container = React.createElement("div",
-{
-    id:"container"
-},
-[heading,heading2]);
+//React Component
+// - Functional
+const HeaderComponent = () => {
+    return (
+        <div>
+            <h1>Namaste React from functional component</h1>
+            <h2>This is a h2 tag</h2>
+        </div>
+    );
+};
+
+/**Component Composition*/
+const HeaderComponent1 = () => 
+(
+    <div>
+        {heading2}
+        <HeaderComponent/>
+        <h1>Namaste React from another functional component</h1>
+        <h2>This is a another h2 tag</h2>
+    </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(container);
+root.render(<HeaderComponent1/>);
+
