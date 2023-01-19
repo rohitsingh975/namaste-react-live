@@ -24,18 +24,51 @@ import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
 import Footer from "./component/Footer";
+import About from "./component/About";
+import Error from "./component/Error";
+import Contact from "./component/Contact";
+import RestrauntMenu from "./component/RestrauntMenu";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
+import { Children } from "react/cjs/react.production.min";
 
 const AppLayout = () => {
     return (
         <>
         <Header />
-        <Body />
+        <Outlet />
         <Footer />
         </>
     );
 };
 
+const  appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout />,
+        errorElement: <Error />,
+        children: [
+            {
+                path: "/",
+                element: <Body />
+            },
+            {
+                path: "/about",
+                element: <About />
+            },
+            {
+                path: "/contact",
+                element: <Contact />
+            },
+            {
+                path: "/restraunt/:resId",
+                element: <RestrauntMenu />
+            }
+        ],
+    }
+    
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
 

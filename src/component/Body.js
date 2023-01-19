@@ -3,6 +3,7 @@ import RestrauntCard from "./RestrauntCard";
 import { useState,useEffect } from "react";
 //import { ShimmerButton } from "react-shimmer-effects";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterData(searchInput,allRestaraunts) {
     const filterData = allRestaraunts.filter((restaraunt) => restaraunt?.data?.name?.toLowerCase()?.includes(searchInput.toLowerCase()));
@@ -28,8 +29,8 @@ const Body = () => {
 
     if(!allRestaraunts) return null;
 
-    if(filterdRestaraunts?.length === 0)
-        return <h1> No restaraunt found!!!</h1>; 
+    // if(filterdRestaraunts?.length === 0)
+    //     return <h1> No restaraunt found!!!</h1>; 
 
     return allRestaraunts.length === 0 ? (<Shimmer />)
     : (
@@ -53,7 +54,7 @@ const Body = () => {
         <div className="restaurant-list">
             {
                 filterdRestaraunts.map((restaraunt) => {
-                    return <RestrauntCard {...restaraunt.data} key={restaraunt.data.id}/>;
+                    return <Link to={"/restraunt/"+restaraunt.data.id} key={restaraunt.data.id} ><RestrauntCard {...restaraunt.data} /></Link>;
                 })
             }
         </div>
