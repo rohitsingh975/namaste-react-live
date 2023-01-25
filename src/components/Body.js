@@ -4,6 +4,7 @@ import { useState,useEffect } from "react";
 //import { ShimmerButton } from "react-shimmer-effects";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 function filterData(searchInput,allRestaraunts) {
     const filterData = allRestaraunts.filter((restaraunt) => restaraunt?.data?.name?.toLowerCase()?.includes(searchInput.toLowerCase()));
@@ -27,10 +28,13 @@ const Body = () => {
         setFilterdRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
 
-    if(!allRestaraunts) return null;
+    const isOnline = useOnline();
 
-    // if(filterdRestaraunts?.length === 0)
-    //     return <h1> No restaraunt found!!!</h1>; 
+    if(!isOnline) {
+        return <h1>Offline, please check your internet connection!!</h1>;
+    }
+
+    if(!allRestaraunts) return null;
 
     return allRestaraunts.length === 0 ? (<Shimmer />)
     : (
