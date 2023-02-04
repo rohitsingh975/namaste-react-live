@@ -13,7 +13,7 @@ const RestrauntCard = ({
             />
             <h2 className="font-bold text-xl">{name}</h2>
             <h2>{cuisines.join(", ")}</h2>
-            <h2>{lastMileTravelString} minutes</h2>            
+            <h2>{lastMileTravelString}</h2>            
         </div>
     );
 };

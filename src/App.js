@@ -1,24 +1,3 @@
-/**
- * HMR - Hot module replacement
- * File Watcher Algorithm - C++
- * BUNDLING
- * MINIFY
- * Cleaning our Code
- * Dev and Production Build
- * Super fast build Algorithm
- * Image Optimization
- * Caching while development
- * Compression
- * Compatible with older version of browser - Add polyfills
- * HTTPS on dev
- * Port number 
- * Consistent Hashing Algorithm
- * Zero Config
- * Tree Shaking
- * Transitive Dependencies
- */
-
-
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
