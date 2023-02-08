@@ -41,6 +41,7 @@ const Body = () => {
         <>
         <div className="p-5 bg-pink-50 my-5">
             <input
+                data-testid="search-input"
                 type="text"
                 className="p-1 m-1"
                 placeholder="Search"
@@ -50,14 +51,16 @@ const Body = () => {
                 }}
             />
 
-        <button className="p-1 m-1 bg-purple-400 hover:bg-purple-500 text-white rounded-md"
+        <button 
+            data-testid="search-btn"
+            className="p-1 m-1 bg-purple-400 hover:bg-purple-500 text-white rounded-md"
             onClick={() => {
                 const data = filterData(searchInput,allRestaraunts);
                 setFilterdRestaurants(data);
             }}>Search</button>
         </div>
         
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap" data-testid="res-list">
             {
                 filterdRestaraunts.map((restaraunt) => {
                     return <Link to={"/restraunt/"+restaraunt.data.id} key={restaraunt.data.id} ><RestrauntCard {...restaraunt.data} /></Link>;
